@@ -130,3 +130,5 @@ In node.js, it's common to use "npm" to run different commands. To run this appl
 ```
 
 Then in VS Code command line or your OS terminal window, run `npm start` and it runs as before.
+
+When everything works, it is a good idea to commit and push the changes.
