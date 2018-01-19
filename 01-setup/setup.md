@@ -161,6 +161,13 @@ Add the following lines to `package.json` thus Heroku knows the node engine used
 
 The version number should be the same as the output of command `node --version`.
 
+Additionally, make sure the server is listenting on a port that is set by an enviornement variable:
+
+```js
+const port = process.env.PORT || DEFAULT_PORT
+app.listen(port)
+```
+
 ### 3.2 Install Heroku CLI
 
 Download and install Heroku CLI from the [Heroku CLI websit](https://devcenter.heroku.com/articles/heroku-cli).
