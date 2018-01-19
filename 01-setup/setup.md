@@ -9,6 +9,8 @@ A professional web developer uses many tools to improve productivity and softwar
 
 You should use VS Code to write/run/debug Node.js + Express.js code locally. Then push code to Github. Deploy code to Heroku thus the application can be accessible to the public.
 
+The video of [Upload NodeJS App to Heroku in 10 mins](https://youtu.be/UZa-K94-efk) has a very similar demo.
+
 ## 1 Install Software
 
 ### 1.1 Node.js
