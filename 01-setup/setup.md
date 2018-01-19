@@ -7,7 +7,7 @@ A professional web developer uses many tools to improve productivity and softwar
 * Git: the software version management tool.
 * Heroku: the cloud application host service.
 
-We use VS Code to write/run/debug Node.js + Express.js code locally. Then push code to Github. Deploy code to Heroku thus the application can be accessible to the public.
+You should use VS Code to write/run/debug Node.js + Express.js code locally. Then push code to Github. Deploy code to Heroku thus the application can be accessible to the public.
 
 ## 1 Install Software
 
@@ -29,7 +29,7 @@ Go to [https://code.visualstudio.com/download](https://code.visualstudio.com/dow
 
 ### 1.3 Git and GitHub
 
-Git is the most popular software version management tool. VS Code has built-in support for Git therefore we only need to use it for project initial setup.
+Git is the most popular software version management tool. VS Code has built-in support for Git therefore you only need to use it for project initial setup.
 
 Go to [https://git-scm.com/downloads](https://git-scm.com/downloads) to download and install the latest version of Git. run `git --version` to verify the installation.
 
@@ -82,15 +82,25 @@ It shows that the project has a dependency of the `express` package.
 Creat a `server.js` file with the following content:
 
 ```js
+// import a module used later
+const path = require('path')
+
+const DEFAULT_PORT = 3377
+const WEBSITE_FOLDER = 'website'
+
 const express = require('express')
 const app = express()
 
-// Serve up content from public directory
-app.use(express.static(__dirname + '/website'))
+// Serve up website contents from the specified folder
+const websitePath = path.join(__dirname, WEBSITE_FOLDER)
+app.use(express.static(websitePath))
 
-const port = 3377
-console.log(`Server listening at port ${port}`)
+// start the web server listening on a port
+const port = process.env.PORT || DEFAULT_PORT
 app.listen(port)
+
+// log runtime message
+console.log(`Server listening at port ${port}`)
 ```
 
 The code will serve static files from a `website` folder.
@@ -114,21 +124,53 @@ Create a new folder `website` and an `index.html` file in this new folder. It is
 </html>
 ```
 
-### 7. Run the Application
+### 2.7 Run the Application
 
 In VS Code terminal, run `node server` and it should display "Server listening at port 3377". Open a browser and type `localhost:3377` in the address bar to access the HTML page.
 
 To stop the node application, type `Ctrl + C`.
 
-In node.js, it's common to use "npm" to run different commands. To run this application, add a new line to the "scripts" section of `package.json`. It is like the following: 
+In node.js, it's common to use "npm" to run different commands. To run this application, add a new line to the "scripts" section of `package.json`. It is like the following:
 
 ```json
 "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server"
+    "start": "node server.js"
 },
 ```
 
 Then in VS Code command line or your OS terminal window, run `npm start` and it runs as before.
 
 When everything works, it is a good idea to commit and push the changes.
+
+## 3 Deploy the Node.js Application
+
+After installing the above sofware and creating the first project, you can deploy it to Heroku -- a cloud service provider. Below are simple steps used to deploy the application. The [Getting Started on Heroku with Node.js](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article gives step-by-step instructions of using Node.js in Heroku. The [Deploying Node.js Apps on Heroku](https://devcenter.heroku.com/articles/deploying-nodejs) and [Heroku Node.js Support](https://devcenter.heroku.com/articles/nodejs-support) have additional information of deploying a Node.js app on Heroku.
+
+### 3.1 Make the Application Cloud-ready
+
+Running an application in a cloud is differently different from running it locally. You need to make one small change to make the first project cloud-ready.
+
+Add the following lines to `package.json` thus Heroku knows the node engine used.
+
+```json
+"engines": {
+    "node": "9.4.0"
+},
+```
+
+The version number should be the same as the output of command `node --version`.
+
+### 3.2 Install Heroku CLI
+
+Download and install Heroku CLI from the [Heroku CLI websit](https://devcenter.heroku.com/articles/heroku-cli).
+
+To test that the Heroku CLI is installed properyly, in the project root folder, run `heroku local web` and check that your app is accessible from at `http://localhost:5000`.
+
+### 3.4 Deploy to Heroku
+
+First, run `heroku create` to create a remote Heroku repository for the local git repository.
+
+Then in project folder, run `git push heroku master`. This command push local repository to the Heroku repository and deploy it. You should run this command if you commit any new changes to the local repository.
+
+Type `heroku open` to access the app in a browser.
