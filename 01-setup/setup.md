@@ -9,13 +9,15 @@ A professional web developer uses many tools to improve productivity and softwar
 
 You should use VS Code to write/run/debug Node.js + Express.js code locally. Then push code to Github. Deploy code to Heroku thus the application can be accessible to the public.
 
-The video of [Upload NodeJS App to Heroku in 10 mins](https://youtu.be/UZa-K94-efk) has a very similar demo.
+The following sections give a detail description of installation and setup of required software, creating a simple Node.js application and the deployment to the Heroku cloud platform. The video of [Upload NodeJS App to Heroku in 10 mins](https://youtu.be/UZa-K94-efk) has a very similar demo. [How to deploy a Node / Express App to Heroku](https://youtu.be/6Fu39V6T_G0) is another example.
 
 ## 1 Install Software
 
 ### 1.1 Node.js
 
-Node.js is a JavaScript runtime platform that is used to JavaScript applications. Go to [https://nodejs.org](https://nodejs.org) to download and install the latest (current) Node.js.
+Node.js is a JavaScript runtime platform that is used to JavaScript applications. The Youtube video [Node.js Tutorial For Absolute Beginners](https://youtu.be/U8XF6AFGqlc) gives a brief introduction to Node.js.
+
+Go to [https://nodejs.org](https://nodejs.org) to download and install the latest (current) Node.js.
 
 There are two stable versions listed in the above page: a long term support (LTS) version and the current version. For learning purpose, just download the latest version. For production deployment, you may want to use a LTS version.
 
@@ -27,11 +29,15 @@ Once you install it, run `node --version` to make sure it is installed correctly
 
 VS Code is a free, open source, simple, and powerful Integrated Development Environment (IDE) for web application development. It has many plugins that provide many functions in addition to its core  features. It has built-in support for Git.
 
+The Youtube video [Visual Studio Code Intro & Setup](https://youtu.be/fnPhJHN0jTE) is an introduction to basic VS Code tasks.
+
 Go to [https://code.visualstudio.com/download](https://code.visualstudio.com/download) to download it for your operating systems.
 
 ### 1.3 Git and GitHub
 
 Git is the most popular software version management tool. VS Code has built-in support for Git therefore you only need to use it for project initial setup.
+
+Please watch the Youtube video [Git & GitHub Crash Course For Beginners](https://youtu.be/SWYqp7iY_Tc) to learn the basic concepts and how to use it.
 
 Go to [https://git-scm.com/downloads](https://git-scm.com/downloads) to download and install the latest version of Git. run `git --version` to verify the installation.
 
