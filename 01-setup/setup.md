@@ -45,9 +45,7 @@ In Git terms, a software project is called a repository. GitHub is a cloud servi
 
 Go to [https://github.com](https://github.com) to create an account if you don't have one.
 
-Use `git config --global user.name "Mona Lisa"` to set up a global username for all your repositories. Use `$ git config --global user.email "email@example.com"` to set up an email for all your repositories.
-
-To link the local Git with your GitHub account and not type username and password repetitively, you need to use a credential helper to cache GitHub username and password. For Mac OS, check [this article](https://help.github.com/articles/caching-your-github-password-in-git/#platform-mac). For Windows, check [this article](https://help.github.com/articles/caching-your-github-password-in-git/#platform-windows). Run `git config --global credential.helper 'cache --timeout=3600'` to let Git cache your password for 1 hour (3600 seconds). This [stackoverflow question](https://stackoverflow.com/questions/5343068/is-there-a-way-to-skip-password-typing-when-using-https-on-github#) has several answers.
+After downloading and installing git in your local computer, use `git config --global user.name "Mona Lisa"` to set up a global username for all your repositories. Use `$ git config --global user.email "email@example.com"` to set up an email for all your repositories.
 
 ## 2 The First Node.js Project
 
@@ -72,6 +70,8 @@ Then run VS code and open the `first-project` folder as the current project.
  In the source control icon, it shows that there is a new file `package.json` with a "U" letter on the right. The "U" means that it is a new file in "uncommitted" state. Type a short message such as "add package.json" and click the check-in icon. The source control shows a line of "CHANGES 0".
 
 Then click the "..." icon on the top right and select "Push" to push the commit to Github repository. You can check the Github repository that there is a new commit and a new file named "package.json".
+
+When push to remote repository, you will be asked for your github username and password. To link the local Git with your GitHub account and not type username and password repetitively, you need to use a credential helper to cache GitHub username and password. For Mac OS, check [this article](https://help.github.com/articles/caching-your-github-password-in-git/#platform-mac). For Windows, check [this article](https://help.github.com/articles/caching-your-github-password-in-git/#platform-windows). Run `git config --global credential.helper 'cache --timeout=3600'` to let Git cache your password for 1 hour (3600 seconds). This [stackoverflow question](https://stackoverflow.com/questions/5343068/is-there-a-way-to-skip-password-typing-when-using-https-on-github#) has several answers.
 
 ### 2.4 Install the `express` Package
 
