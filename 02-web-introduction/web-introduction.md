@@ -163,3 +163,7 @@ The final code of the home `index.html` is as the following:
 ```
 
 As shown above, `<div>` is used to group some elments into a generic block elment. You can investigate and navigate the document structure using Chrome Development tools.
+
+To make it a better web site, add `favicon` inside the `<head>` element using code `<link rel="shortcut icon" href="images/favicon.png">`. You need to define `rel` for relationship and `href` for the image path. When add it in the `contact/index.html`, use a correct relative path to the image file.
+
+Finally, you can use `<!-- Your comments -->` to add comments. It is always a good idea to add comments to describe special development notes to your HTML file.
