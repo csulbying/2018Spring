@@ -143,7 +143,7 @@ The final code of the home `index.html` is as the following:
         </nav>
         <main>
             <ul>
-                <li><p>My SF City Trip</p><div><img src="images/sf.png" alt="Image of the San Francisco streets"></div></li> 
+                <li><p>My SF City Trip</p><div><img src="images/sf.png" alt="Image of the San Francisco streets"></div></li>
                 <li><p>The California Landscape</p><div><img src="images/california.png" alt="Image of the California streets"></div></li>
             </ul>
             <p>Do people like my Page</p>
