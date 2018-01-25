@@ -15,7 +15,7 @@ The following sections give a detail description of installation and setup of re
 
 ### 1.1 Node.js
 
-Node.js is a JavaScript runtime platform that is used to JavaScript applications. The Youtube video [Node.js Tutorial For Absolute Beginners](https://youtu.be/U8XF6AFGqlc) gives a brief introduction to Node.js.
+Node.js is a JavaScript runtime platform that is used to run JavaScript applications. The Youtube video [Node.js Tutorial For Absolute Beginners](https://youtu.be/U8XF6AFGqlc) gives a brief introduction to Node.js.
 
 Go to [https://nodejs.org](https://nodejs.org) to download and install the latest (current) Node.js.
 
