@@ -51,7 +51,7 @@ After downloading and installing git in your local computer, use `git config --g
 
 ### 2.1 Create a Github Repository
 
-Create a new repository in Github, give it a unique name such as `First-Project` and a description. By default, it is "Public" that is accessible to anyone. Check the "Initialize this repository with a README" option to let GitHub create an initial `README.md` file.
+Create a new repository in Github, give it a unique name such as `first-project` and a description. By default, it is "Public" that is accessible to anyone. Check the "Initialize this repository with a README" option to let GitHub create an initial `README.md` file.
 
 There are two buttons above the "Create repository" button. For "Add .gitignore", select the "Node". For "Add a license", select "Apache License 2.0" or any one you like. Then click the "Create repository" button to create the repository.
 
