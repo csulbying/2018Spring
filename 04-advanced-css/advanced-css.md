@@ -50,5 +50,30 @@ Some old broswers do not support `rem` therefore you may want to add `px` size i
 
 Go to [Google font site](https://fonts.google.com) to pick and add a font family to your web page. You need to link it in `<head>` and add `font-family` property to an html element.
 
-## 4 Media and Viewport
+## 4 Viewport and Media
 
+When you design a web site, you should follow the "mobile-first" principle: first make sure your site works correctly in mobile devices, then make it works in bigger screens. A web site is responsive if it works in all screen sizes.
+
+A mobile web browser doesn't detect the screen size and adjust the view port size automatically. Therefore what work in a desktop browser may not work correctly in a smart phone. You can check the web page using the Chrome Dev Tools mobile mode and selecting a small screen, the main images are not wrapped as expected even when the screen width is small than the total of min-width of the two images.
+
+Add `<meta name="viewport" content="width=device-width">` to the "head" element to tell the mobile browser to use the device width for its viewport.
+
+To make the page looks better in a mobile devices, change the main image width to `100%` and remove the min-width property. Change the navigation text to `font-size: 0.9rem;`.
+
+If you want to display a bigger navigation text in a bigger screen, use media queries like `@media (min-width: 400px){ .navigation li { font-size: 1.2rem } }`. If you don't want to display main trip texts in a small device, comment out trip text styles and add `.trip-text { display: none; }` inside the media query.
+
+The `min-width: 400px` is called a break point. If you want to display the trip images side by side for a large screen, add the declaration: `@media (min-width: 700px){ .trip-images img { width: 50% } }`. Also copy the commented trip text to this media query to make them visible ang aligned with their corresponding images.
+
+You can use a combination of `min-width` and `max-width` to specify the screen size.
+
+## 5 Pseudo Classes
+
+An HTML element may be in certain conditions such as in diffrent status (clicked, mouse over, focused, enabled) or in a specific location (the first child, the nth child). You use pseudo class to select elements in the specific condition. The [Meet the Pseudo Class Selector](https://css-tricks.com/pseudo-class-selectors/) article is a good introduction.
+
+Use `:pseudo-class` to select elements in certain condition. For example, use `a:visited` to select links that have been visted by the current browser.
+
+Use `::pseudo-class` to select actual content. For example, use `p::first-line` to select the first line of a paragraph.
+
+To change the mouse over an image, add declaration `img:hover { cursor: pointer; }`.
+
+To change a link when it is clicked, add declaratoin `a:active { color: orange; }`.
