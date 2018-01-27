@@ -6,7 +6,7 @@ As creating HTML documents, you should have a style design first before create s
 
 ## 1 CSS Syntax
 
-CSS styles are defines as rules. Essentially you use CSS to apply some styles to some elements. Therefore a rule has two parts: a list of selectors and a set of declarations. A selector selects one or more elements and a declaration gives the style to be applied.
+CSS styles are defines as rules. Essentially you use CSS to apply some styles to some elements. Therefore a rule has two parts: a list of selectors and a set of declarations. A selector selects one or more elements and a declaration gives the style to be applied. Please check the CSS-tricks article [how css selects work](https://css-tricks.com/how-css-selectors-work/) to get a good understanding.
 
 For example: `header { color: red; }`. The `header` is a selector that selects all `<header>` elements. A declartion consists of a property name and a value. In this example, the property is `color` and the value is `red`. A declaration should be terminated by a semicolon `;`. Inside the curly brackts, you can define multiple declarations separated by `;`.
 
@@ -25,7 +25,7 @@ header {
 </style>
 ```
 
-Then you might be wondering what are the style properties and what are thier values. Again, MDN documents have the answers. The [CSS reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference) has a list of properties. There are several CSS tutorials in the middle of [MDN Tutorials page](https://developer.mozilla.org/en-US/docs/Web/Tutorials).
+Then you might be wondering what are the style properties and what are thier values. Again, MDN documents have the answers. The [CSS reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference) has a list of properties. There are several CSS tutorials in the middle of [MDN Tutorials page](https://developer.mozilla.org/en-US/docs/Web/Tutorials). However, the MDN documents are not easy to digest. The [CSS Tricks Almanac](https://css-tricks.com/almanac/) has much better explanation and good demos. [Its guides](https://css-tricks.com/guides/) are more readable and easier to follow.
 
 ## 2 More Styles
 
