@@ -358,39 +358,6 @@ Bootstrap has pre-defined color names that can be posfixed to `text-`, `btn-`, `
 
 Check the [colors doc](https://getbootstrap.com/docs/4.0/utilities/colors/) for details and examples.
 
-## 5. Use Font Awesome
-
-Adding appropriate icons will make your page more attractive. [Font Awesome](https://fontawesome.com/icons?d=gallery) is a popular icon library that has some free icons and is easy to use.
-
-Add the following line to `head` section of your html file.
-`<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>`.
-
-Then you can place Font Awesome icons just about anywhere using a CSS style prefix `. fas` and the icon’s name such as `fa-camera-retro`. Font Awesome is designed to be used with inline elements. Use `i` tag for brevity, but using a `span` is more semantically correct.
-
-```html
-<h2>Icon Demos</h2>
-<!-- user icon in two different styles: fas for solid, far for regular. -->
-<div>
-    <i class="fas fa-user"></i>
-    <i class="far fa-user"></i>
-
-    <!--some special brand icons-->
-    <i class="fab fa-github-square"></i>
-    <i class="fab fa-font-awesome"></i>
-
-</div>
-
-<!--  use font-size and color to customize -->
-<div style="font-size: 2rem; color: Tomato">
-    <i class="fas fa-user"></i>
-    <i class="far fa-user"></i>
-
-    <!--some special brand icons-->
-    <i class="fab fa-github-square"></i>
-    <i class="fab fa-font-awesome"></i>
-</div>
-```
-
 [getbootstrap]: https://getbootstrap.com/
 [bootstrap-doc]: https://getbootstrap.com/docs
 [start-template]: https://getbootstrap.com/docs/4.0/getting-started/introduction/#starter-template
