@@ -102,6 +102,8 @@ To move the tilte to the center of the page, add `text-align: center` to the `.p
 
 Now add styles to the feedback paragraph. Adding `class="feedback"` to the element and `.feedback { background-color: #521751; color: white; text-align: center; }` to the style file.
 
+The [CSS-Trick](https://css-tricks.com/almanac/properties/p/position/) has details for other position styles.
+
 ## 6 Display
 
 ### 6.1 Theory
