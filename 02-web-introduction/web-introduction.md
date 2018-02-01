@@ -120,7 +120,7 @@ Try to create a subfolder called `contact` and create a `index.html` file there.
 
 In the `contact/index.html` file, you can have a link as `<a href="../index.html">Home</a>` to link back to the home page.
 
-Create an `images` folder and Add images to the folder. Use the `<img>` to add image elment. It has a `src` property to link to an image file. It is always a good idea to provide a text description using `alt` property to an `<img>` elment because it meets the accessibility requirement. The code for an image link is like `<img src="images/california.pn" alt="Image of California">.
+Create an `images` folder and Add images to the folder. Use the `<img>` to add image elment. It has a `src` property to link to an image file. It is always a good idea to provide a text description using `alt` property to an `<img>` elment because it meets the accessibility requirement. The code for an image link is like `<img src="images/california.pn" alt="Image of California">`.
 
 The final code of the home `index.html` is as the following:
 

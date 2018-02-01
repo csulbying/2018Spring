@@ -6,7 +6,7 @@ As creating HTML documents, you should have a style design first before create s
 
 ## 1 CSS Syntax
 
-CSS styles are defines as rules. Essentially you use CSS to apply some styles to some elements. Therefore a rule has two parts: a list of selectors and a set of declarations. A selector selects one or more elements and a declaration gives the style to be applied. Please check the CSS-tricks article [how css selects work](https://css-tricks.com/how-css-selectors-work/) to get a good understanding.
+CSS styles are defines as rules. Essentially you use CSS to apply some styles to some elements. Therefore a rule has two parts: a list of **selectors** and a declaration block that contains one more more declarations separated by a semicolon. A selector selects one or more elements and a declaration gives the style to be applied. Please check the CSS-tricks article [how css selects work](https://css-tricks.com/how-css-selectors-work/) to get a good understanding.
 
 For example: `header { color: red; }`. The `header` is a selector that selects all `<header>` elements. A declartion consists of a property name and a value. In this example, the property is `color` and the value is `red`. A declaration should be terminated by a semicolon `;`. Inside the curly brackts, you can define multiple declarations separated by `;`.
 
@@ -84,7 +84,7 @@ Now change the "span" in footer as "p". Check that the text are in a new line.
 
 It is better to use a class than a tag as a selector because you have more control with class. Add `class="page-title"` to the "h1" element and change the selector of `h1` to `.page-title`.
 
-It is a convention use use `-` to separate lower-case words in HTML property name and values. It is called **kebab-casing**. HTML itself is case-insensitive. Change all combined names to use kebab casing. For example, `triptext` becomes `trip-text`.
+It is a convention to use `-` to separate lower-case words in HTML property name and values. It is called **kebab-casing**. HTML itself is case-insensitive. Change all combined names to use kebab casing. For example, `triptext` becomes `trip-text`.
 
 ## 5 Position
 
@@ -110,7 +110,7 @@ The display property allows you to change the flow layout of an element. Commons
 
 Use the [theory project](https://github.com/academind/web-dev-beginners-guide/tree/06-css-display-theory) as a start, add `display: block;` to `div` element has no effect at all. The reason is that it is the default display style for a `div` element.
 
-A block element can have a `width` property and a `height` property. Try add a width property as `width: 100px;`. The length of all `div` element width is changed.
+A block element can have a `width` property and a `height` property. Try add a width property as `width: 100px;`. The width of all `div` elements is changed.
 
 If you change its display style to `inline`, then all three `div` elements are displayed in one line with a width that is just enough to wrap their content. An `inline` element doesn't have a `width` property and a `height` property.
 
