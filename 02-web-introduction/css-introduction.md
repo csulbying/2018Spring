@@ -35,7 +35,7 @@ To remove the underline of an anchor link, use `a { text-decorator: none; }`.
 
 Embedded styles has three main disadvantages: first, it makes the HTML file bigger and harder to manage; second, every time you want to change a style, you need to edit the HTML file even nothing is changed in HTML content. Third, the styles are only applied to the embedding file.
 
-A better approach is to use external style files. Create a style file `style.css` in the project root folder. Then cut and paste all styles inside the `<style>` element to this file. To link the exteranl style file to the HTML file, create a `<link>` element like `<link rel="styleshteet" href="style.css">`. Also create a link element in the `contact/contact.html`. In this file it is ``<link rel="styleshteet" href="../style.css">` -- pay attention to the relative path in the `href` property.
+A better approach is to use external style files. Create a style file `style.css` in the project root folder. Then cut and paste all styles inside the `style` element to this file. To link the exteranl style file to the HTML file, create a `link` element like `<link rel="styleshteet" href="style.css">`. Also create a link element in the `contact/contact.html`. In this file it is `<link rel="styleshteet" href="../style.css">` -- pay attention to the relative path in the `href` property.
 
 ## 3 Box Model
 
