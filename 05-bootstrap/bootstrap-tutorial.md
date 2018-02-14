@@ -4,9 +4,7 @@
 
 Create a `components.html` file in your source code folder. Add `<h1>Bootstrap Tutorial</h1>` into the `body` section.
 
-<<<<<<< HEAD
 Go to the [Getting started](https://getbootstrap.com/docs/4.0/getting-started/introduction/) in [Bootstrap web site](getbootstrap) to copy the starter template into the html file. The [starter template](http://getbootstrap.com/docs/4.0/getting-started/introduction/#starter-template) has the basic setup for charset, viewport, css and JavaScript scripts. Some bootstrap components require the use of JavaScript scripts to work.
-=======
 Go to the [Getting started](https://getbootstrap.com/docs/4.0/getting-started/introduction/) in [Bootstrap web site](getbootstrap) to copy the starter template [starter template](start-template) to your html file. Start tempalte has the basic setup for charset, viewport, css and JavaScript scripts. Some bootstrap components require the use of JavaScript scripts to work.
 
 ### 1.1 Breakpoints
@@ -24,7 +22,6 @@ These 5 breakpoints are often used as postfix/infix to style property to specify
 ### 1.2 Container
 
 Containers are the most basic layout element in Bootstrap for the page layout. Put  existing contents into `<div class="container">...</div>` and see the difference. The container has a fixed width at each breakpoints. Try to use `container-fluid` to make it use whole width.
->>>>>>> ee5ca4fc5505f5ff424f6a64ad99461b31310b6f
 
 ## 2 Basic Components
 
