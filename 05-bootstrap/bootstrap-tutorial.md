@@ -4,7 +4,27 @@
 
 Create a `components.html` file in your source code folder. Add `<h1>Bootstrap Tutorial</h1>` into the `body` section.
 
+<<<<<<< HEAD
 Go to the [Getting started](https://getbootstrap.com/docs/4.0/getting-started/introduction/) in [Bootstrap web site](getbootstrap) to copy the starter template into the html file. The [starter template](http://getbootstrap.com/docs/4.0/getting-started/introduction/#starter-template) has the basic setup for charset, viewport, css and JavaScript scripts. Some bootstrap components require the use of JavaScript scripts to work.
+=======
+Go to the [Getting started](https://getbootstrap.com/docs/4.0/getting-started/introduction/) in [Bootstrap web site](getbootstrap) to copy the starter template [starter template](start-template) to your html file. Start tempalte has the basic setup for charset, viewport, css and JavaScript scripts. Some bootstrap components require the use of JavaScript scripts to work.
+
+### 1.1 Breakpoints
+
+Bootstrap is developed to be mobile first therefore it has a set of media queiries to create sensible layout breakpoints including:
+
+* `xs`: less than 576px, potrait phones
+* `sm`: 576px and up, landscape phones
+* `md`: 768px and up, tablets
+* `lg`: 992px and up, desktops
+* `xl`: 1200px and up, large desktops
+
+These 5 breakpoints are often used as postfix/infix to style property to specify the responsive layout behavior. You can define different styles for different screen sizes.
+
+### 1.2 Container
+
+Containers are the most basic layout element in Bootstrap for the page layout. Put  existing contents into `<div class="container">...</div>` and see the difference. The container has a fixed width at each breakpoints. Try to use `container-fluid` to make it use whole width.
+>>>>>>> ee5ca4fc5505f5ff424f6a64ad99461b31310b6f
 
 ## 2 Basic Components
 
@@ -81,7 +101,46 @@ The class `form-control` is important to style and layout form controls. Try to 
 
 Add `form-inline` class to a form to make it an inline form.
 
-### 2.4 Navs
+### 2.4 Dropdowns
+
+Dropdowns are toggleable, contextual overalys for displaying lists of links. They are toggled by clicking. It uses `Popper.js` (included in `bootstrap.bundle.js`) to work. 
+
+To use it, first declare a wrapper element like `<div> class="dropdown">...<div>`. Inside this wrapper are a toggle button and a dropdown menu that has a list of dropdown items.
+
+Then use a button as the following as the toggle button: `<button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Dropdown</button>`. The two important attributes making it toggeble are `data-toggle="dropdown"` (to make it toggle menu) and the `.dropdown-toggle` (to show the dropdown icon) in the class. The `aria-haspopup` and `aria-expanded` attributes are for accessibility.
+
+Then define a list of items inside a wrapper. The final code is as below:
+
+```html
+<div class="dropdown">
+  <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
+```
+
+When used in navigation bar, using an `<a>` element for toggle button is more consistent in styles: 
+
+```html
+<div class="dropdown show">
+  <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown link
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
+```
+
+### 2.5 Navs
 
 To add a simple navigation component, use `class="nav"` with a `ul` or `nav` element.
 
@@ -96,31 +155,77 @@ Add the following above the jumbotron component.
 </nav>
 ```
 
+### 2.6 Navbar
+
+A basic navbar is usally wrapped in a `nav` element with a `.navbar` class and a color scheme. A `.navbar-light` for use with light backgrounds, or `.navbar-dark` for dark background colors. use `.bg-*` to define background color. For example: `<nav class="navbar navbar-dark bg-primary">`.
+
+### 2.6.1 Sub Components
+Navbars comes with built-in suport for sub-components such as a brand, bar text, form controls, and navigation items. 
+
+* `.navbar-brand`: brand/log for your company or project. For example: `<a class="navbar-brand" href="#">My Brand</a>.
+* `.navbar-text`: just some text in navbar. For example: `<span class="navbar-text">Navbar text</span>`
+* `.form-inline`: various form controls within a `form` element. For example: 
+
+    ```html  
+    <form class="form-inline">
+        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    ```
+
+* `.navbar-nav`: for a group of navigation items. There are two common patterns: one uses `ul`, `li` and `a` while the other only uses `div` and `a`. In wrapper, use `.navbar-nav`, inside, apply `.nav-item` and `.nav-link`. A navigation item can be a dropdown.
+
+    ```html
+    <!-- list based -->
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+
+    <!-- or just list of links -->
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="#">Features</a>
+      <a class="nav-item nav-link" href="#">Pricing</a>
+      <a class="nav-item nav-link disabled" href="#">Disabled</a>
+    </div>
+    ```
+
+However, the default behaivor of `.navbar-nav` is not a single row of list items, instead it is a list of multiple rows in one column -- more appropriate for side nav or dynamic nav when toggled. The behavior can be enabled using responsive attributes.
+
+### 2.6.2 Responsive Navbar
+
+To make the `navbar-nav` displayed in a row, add `.navbar-expand-lg` to the `.navbar` wrapper. Change the screen size to see the effect.
+
+When the screen size is smaller than the `lg` breakpoint, the nav items displayed in a column again. What we really want is to make it into a menu icon and only show them when the icon is toggled. Similar to the pattern of dropdowns, you need do two things.
+
+First, define a toggle icon like the following inside the navbar wrapper: 
+
+```html
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+```
+
+This icon is also controlled by the `.navbar-expand-{breakpoint}` value. In this case, it is hidden in large screen and is shown in small screen. It doesn't as expected because the `data-target` doesn't point to a correct collapsible element. 
+
+The second step is to wrapper the `.navbar-nav` inside an element with `.collapse` and `.navbar-collapse` class attributes and has the `id` value as specified by the toggle icon. In this case, it should be: `<div class="collapse navbar-collapse" id="navbarSupportedContent"></div>`.
+
 ## 3 Row-based Layout
 
-Bootstrap created its reputation for having a flexible, easy-to-use and responsive layout system. Check [bootstrap layout](https://getbootstrap.com/docs/4.0/layout/overview/) for details.
+Bootstrap created its reputation for having a flexible, easy-to-use and responsive layout system. Check [bootstrap layout](https://getbootstrap.com/docs/4.0/layout/overview/) for details. Bootstrap's grid system is built with flexbox. It uses a series of containers, rows and columns to layout and align content.
 
-### 3.1 Breakpoints
-
-Bootstrap is developed to be mobile first therefore it has a set of media queiries to create sensible layout breakpoints including:
-
-* `xs`: less than 576px, potrait phones
-* `sm`: 576px and up, landscape phones
-* `md`: 768px and up, tablets
-* `lg`: 992px and up, desktops
-* `xl`: 1200px and up, large desktops
-
-These 5 breakpoints are often used as postfix/infix to style property to specify the responsive layout behavior.
-
-### 3.2 Container
-
-Containers are the most basic layout element in Bootstrap for the page layout. Put  existing some contents into `<div class="container">...</div>` and see the difference. The container has a fixed width at each breakpoints. Try to use `container-fluid` to make it use whole width.
-
-### 3.3 Grid
-
-Bootstrap's grid system is built with flexbox. It uses a series of containers, rows and columns to layout and align content.
-
-#### 3.3.1 The Start
+#### 3.1 The Start
 
 Create a new `grid.html` file based on the [start template](start-template). Replace the `h1` element with the following content:
 
@@ -149,7 +254,7 @@ The suggest way to create layout is as the following:
 * Use `.col-{breakpoint}`, `.col-#`, or `.col-{breakpoint}-#` to style a grid column. The `{breakpoint}` is one of the above breakpoints. There is no need to use `xs` because it mean all screen size. In other words, `.col` is a class that can be thought as `.col-xs`. The `#` is a number from 1 to 12 that specifies the number of columns for a column.
 * Put only columns in a row wrapper and put content (or nested rows) only in columns.
 
-#### 3.3.2 Responsive Columns
+#### 3.2 Responsive Columns
 
 If you want to have the same layout regardless of devie size, use `.col` or `.col-#`, i.e., without using a breakpoint. For example:
 
@@ -210,7 +315,7 @@ One more example for 4 items, suppose you have the following requirements:
 </div>
 ```
 
-#### 3.3.3 Auto-layout Columns
+#### 3.3 Auto-layout Columns
 
 To make equal-width column, simply use `.col`.
 
@@ -268,13 +373,13 @@ If you set a column width for some columns, the columns without width will share
 
 To make a column width based on the natural width of its content, use `col-{breakpoint}-auto`. Change any of the above column to `col-md-auto` and check the effect.
 
-### 3.3.4 Alignment
+### 3.4 Alignment
 
 You can use flexbox alignment utilities to vertically or horizontally align columns. Similar to flexbox alignment, you can specify the alignment at the row level (the flexbox container) or the column level (flexbox item).
 
 Check the [alignment document](https://getbootstrap.com/docs/4.0/layout/grid/#alignment) for details and the esay-to-follow examples.
 
-### 3.3.5 Column Offset
+### 3.5 Column Offset
 
 You can move columns to the right useing `.offset-{breakpoint}-#` classes. For example, `.offset-md-4` moves an element over four columns.
 
