@@ -100,7 +100,7 @@ Add `form-inline` class to a form to make it an inline form.
 
 ### 2.4 Dropdowns
 
-Dropdowns are toggleable, contextual overalys for displaying lists of links. They are toggled by clicking. It uses `Popper.js` (included in `bootstrap.bundle.js`) to work. 
+Dropdowns are toggleable, contextual overalys for displaying lists of links. They are toggled by clicking. It uses `Popper.js` (included in `bootstrap.bundle.js`) to work.
 
 To use it, first declare a wrapper element like `<div> class="dropdown">...<div>`. Inside this wrapper are a toggle button and a dropdown menu that has a list of dropdown items.
 
@@ -121,7 +121,7 @@ Then define a list of items inside a wrapper. The final code is as below:
 </div>
 ```
 
-When used in navigation bar, using an `<a>` element for toggle button is more consistent in styles: 
+When used in navigation bar, using an `<a>` element for toggle button is more consistent in styles:
 
 ```html
 <div class="dropdown show">
@@ -157,13 +157,14 @@ Add the following above the jumbotron component.
 A basic navbar is usally wrapped in a `nav` element with a `.navbar` class and a color scheme. A `.navbar-light` for use with light backgrounds, or `.navbar-dark` for dark background colors. use `.bg-*` to define background color. For example: `<nav class="navbar navbar-dark bg-primary">`.
 
 ### 2.6.1 Sub Components
-Navbars comes with built-in suport for sub-components such as a brand, bar text, form controls, and navigation items. 
 
-* `.navbar-brand`: brand/log for your company or project. For example: `<a class="navbar-brand" href="#">My Brand</a>.
+Navbars comes with built-in suport for sub-components such as a brand, bar text, form controls, and navigation items.
+
+* `.navbar-brand`: brand/log for your company or project. For example: `<a class="navbar-brand" href="#">My Brand</a>`.
 * `.navbar-text`: just some text in navbar. For example: `<span class="navbar-text">Navbar text</span>`
-* `.form-inline`: various form controls within a `form` element. For example: 
+* `.form-inline`: various form controls within a `form` element. For example:
 
-    ```html  
+    ```html
     <form class="form-inline">
         <input class="form-control" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
@@ -206,7 +207,7 @@ To make the `navbar-nav` displayed in a row, add `.navbar-expand-lg` to the `.na
 
 When the screen size is smaller than the `lg` breakpoint, the nav items displayed in a column again. What we really want is to make it into a menu icon and only show them when the icon is toggled. Similar to the pattern of dropdowns, you need do two things.
 
-First, define a toggle icon like the following inside the navbar wrapper: 
+First, define a toggle icon like the following inside the navbar wrapper:
 
 ```html
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -214,7 +215,7 @@ First, define a toggle icon like the following inside the navbar wrapper:
 </button>
 ```
 
-This icon is also controlled by the `.navbar-expand-{breakpoint}` value. In this case, it is hidden in large screen and is shown in small screen. It doesn't as expected because the `data-target` doesn't point to a correct collapsible element. 
+This icon is also controlled by the `.navbar-expand-{breakpoint}` value. In this case, it is hidden in large screen and is shown in small screen. It doesn't as expected because the `data-target` doesn't point to a correct collapsible element.
 
 The second step is to wrapper the `.navbar-nav` inside an element with `.collapse` and `.navbar-collapse` class attributes and has the `id` value as specified by the toggle icon. In this case, it should be: `<div class="collapse navbar-collapse" id="navbarSupportedContent"></div>`.
 
@@ -222,7 +223,7 @@ The second step is to wrapper the `.navbar-nav` inside an element with `.collaps
 
 Bootstrap created its reputation for having a flexible, easy-to-use and responsive layout system. Check [bootstrap layout](https://getbootstrap.com/docs/4.0/layout/overview/) for details. Bootstrap's grid system is built with flexbox. It uses a series of containers, rows and columns to layout and align content.
 
-#### 3.1 The Start
+### 3.1 The Start
 
 Create a new `grid.html` file based on the [start template](start-template). Replace the `h1` element with the following content:
 
