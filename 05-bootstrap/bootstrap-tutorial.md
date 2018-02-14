@@ -4,7 +4,7 @@
 
 Create a `components.html` file in your source code folder. Add `<h1>Bootstrap Tutorial</h1>` into the `body` section.
 
-Go to the [Getting started](https://getbootstrap.com/docs/4.0/getting-started/introduction/) in [Bootstrap web site](getbootstrap) to copy the starter template into the html file. The [starter template](start-template) has the basic setup for charset, viewport, css and JavaScript scripts. Some bootstrap components require the use of JavaScript scripts to work.
+Go to the [Getting started](https://getbootstrap.com/docs/4.0/getting-started/introduction/) in [Bootstrap web site](getbootstrap) to copy the starter template into the html file. The [starter template](http://getbootstrap.com/docs/4.0/getting-started/introduction/#starter-template) has the basic setup for charset, viewport, css and JavaScript scripts. Some bootstrap components require the use of JavaScript scripts to work.
 
 ## 2 Basic Components
 
@@ -14,7 +14,7 @@ Bootstrap provides many ready-to-use [components](https://getbootstrap.com/docs/
 
 Some of bootstrap's components are built with a **base + modifier** class approach. Basic styles are defined in a base class and additional style variations are defined in a set of modifier classes. For example, to use button styles, add a `btn` base class and a button modifier class such as `btn-primary` or `btn-outline-success`.  Check [bootstrap button](https://getbootstrap.com/docs/4.0/components/buttons/) for details.
 
-Button styles can be applied to a `a`, `button`, and `input` elments. When `a` is used as a button to trigger in-page action, add `role="button"` to convey the purpose. Add the following contents:
+Button styles can be applied to `a`, `button`, and `input` elements. When `a` is used as a button to trigger in-page action, add `role="button"` to convey the purpose. Add the following contents:
 
 ```html
 <h2>Bacis Buttons</h2>
