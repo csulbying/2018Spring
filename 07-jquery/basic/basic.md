@@ -1,7 +1,5 @@
 # jQuery Basics
 
-## 1 Intial Files
-
 First create an HTML file with the following content:
 
 ```html
