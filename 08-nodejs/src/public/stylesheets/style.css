@@ -1,0 +1,76 @@
+body {
+  padding: 30px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #555555;
+}
+
+a {
+  color: #00b7ff;
+}
+
+.container {
+  padding: 20px;
+  background-color: #efefef;
+  width: 400px;
+  border-radius: 6px;
+}
+.container h3 a {
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: #00ae4d;
+  border-radius: 6px;
+  color: #ffffff;
+}
+
+.container h3 a:hover,
+.container table tr td button:hover {
+  background-color: #78f5ae;
+  color: #999999;
+}
+
+.container table {
+  width: 360px;
+}
+
+.container table tr td {
+  padding: 5px;
+}
+
+.container table tr td input,
+.container table tr td textarea {
+  border: solid 1px #dddddd;
+  padding: 5px 10px;
+  border-radius: 6px;
+  width: 100%;
+  color: #777777;
+}
+
+.container table tr td button {
+  border: solid 1px #aabf5c;
+  background-color: #00ae4d;
+  border-radius: 6px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 10px 0;
+  padding: 10px 20px;
+}
+
+.container form button {
+  border: solid 1px #cb2027;
+  background-color: #dd4b39;
+  border-radius: 6px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 10px 0;
+  padding: 10px 20px;
+}
+
+.container .list-table {
+  width: 360px;
+  border: solid 2px #dddddd;
+  border-spacing: 0;
+}
+
+.container .list-table th {
+  border-bottom: solid 2px #dddddd;
+}
