@@ -102,7 +102,6 @@ Create a `views/users/index.ejs` as the following:
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
-  <script type="text/javascript" src="/javascripts/delete_user.js"></script>
 </head>
 
 <body>
@@ -204,6 +203,8 @@ Run the application and you should see `No users found` because there is not any
 
 ## 5 Create a User
 
+### 5.1 Create a View
+
 Create a `views/users/create.ejs` as the following:
 
 ```html
@@ -213,72 +214,117 @@ Create a `views/users/create.ejs` as the following:
 <head>
   <title>Create a User</title>
   <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/javascripts/create_user.js"></script>
 </head>
 
 <body>
-  <div class="container">
-    <h3>
-      <a href="/users">User List</a>
-    </h3>
-    <h1>Create New User</h1>
-    <form action="/users/save" method="post">
-      <table>
-        <tbody>
-          <tr>
-            <td>Name</td>
-            <td>
-              <input type="text" name="name" />
-            </td>
-          </tr>
-          <tr>
-            <td>Address</td>
-            <td>
-              <textarea name="address"></textarea>
-            </td>
-          </tr>
-          <tr>
-            <td>Position</td>
-            <td>
-              <input type="text" name="position" />
-            </td>
-          </tr>
-          <tr>
-            <td>Salary</td>
-            <td>
-              <input type="number" name="salary" />
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <input type="submit" value="Save" />
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </form>
-  </div>
+  <h3>
+    <a href="/users">User List</a>
+  </h3>
+  <h1>Create New User</h1>
+  <table>
+    <tbody>
+      <tr>
+        <td>Name</td>
+        <td>
+          <input type="text" name="name" />
+        </td>
+      </tr>
+      <tr>
+        <td>Address</td>
+        <td>
+          <textarea name="address"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td>Position</td>
+        <td>
+          <input type="text" name="position" />
+        </td>
+      </tr>
+      <tr>
+        <td>Salary</td>
+        <td>
+          <input type="number" name="salary" />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button id="createButton">Create User</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </body>
 
 </html>
 ```
 
+### 5.2 Create JS Code
+
+Create `public/javascripts/create_user.js` with the following content:
+
+```js
+$(() => $("#createButton").click(createUser));
+
+function createUser() {
+  const salaryVal = $("input[name=salary]")
+    .val()
+    .trim();
+  const salary = parseInt(salaryVal, 10);
+
+  const user = {
+    name: $("input[name=name]")
+      .val()
+      .trim(),
+    address: $("textarea[name=address]")
+      .val()
+      .trim(),
+    position: $("input[name=position]")
+      .val()
+      .trim(),
+    salary
+  };
+
+  const request = $.ajax({
+    type: "post",
+    contentType: "application/json",
+    dataType: "json",
+    data: JSON.stringify(user)
+  });
+
+  request.done(function(data) {
+    console.log("creation done", data);
+  });
+
+  request.fail(function(jqXHR, textStatus, errorThrown) {
+    console.log(jqXHR, textStatus, errorThrown);
+  });
+}
+```
+
+### 5.3 Create Controller Function
+
 Create two controller functions in `controllers/user.js`:
 
 ```js
-userController.create = function(req, res) {
-  res.render("../views/users/create");
+userController.edit = function(req, res) {
+  res.render("users/create");
 };
 
-userController.save = function(req, res) {
+userController.create = function(req, res) {
   var user = new User(req.body);
 
-  user.save(function(err) {
+  user.save(function(err, newUser) {
     if (err) {
       console.log(err);
-      res.render("../views/users/create");
+      res.status(500);
+      res.json(err);
     } else {
       console.log("Successfully created a user.");
-      res.redirect("/users/");
+      res.json(newUser);
     }
   });
 };
@@ -287,11 +333,198 @@ userController.save = function(req, res) {
 Add the following two paths to `routes/users.js`
 
 ```js
-// Create user
-router.get("/create", user.create);
-
 // Save user
-router.post("/save", user.save);
+router.post("/user", user.create);
+
+// Edit or create a user
+router.get("/user/:id?", user.edit);
 ```
 
-## 6 Show and Edit a User
+## 6 Edit a User
+
+### 6.1 Create a View
+
+Create a `views/users/edit.ejs` as the following:
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Edit user</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/javascripts/edit_user.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <h3>
+      <a href="/users">User List</a>
+    </h3>
+    <h1>Edit User</h1>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>Name</td>
+          <td>
+            <input type="text" name="name" value="<%= user.name %>" />
+          </td>
+        </tr>
+        <tr>
+          <td>Address</td>
+          <td>
+            <textarea name="address">
+              <%= user.address %>
+            </textarea>
+          </td>
+        </tr>
+        <tr>
+          <td>Position</td>
+          <td>
+            <input type="text" name="position" value="<%= user.position %>" />
+          </td>
+        </tr>
+        <tr>
+          <td>Salary</td>
+          <td>
+            <input type="number" name="salary" value="<%= user.salary %>" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button id="updateButton">Update</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>
+```
+
+### 6.2 Create Edit Code
+
+Create a js code file `public/javascripts/edit_user.js` with the following content:
+
+```js
+$(() => $("#updateButton").click(updateUser));
+
+function updateUser() {
+  const url = window.location.pathname;
+  const userId = url.substring(url.lastIndexOf("/") + 1);
+  console.log(userId);
+  const salaryVal = $("input[name=salary]")
+    .val()
+    .trim();
+  const salary = parseInt(salaryVal, 10);
+  const user = {
+    name: $("input[name=name]")
+      .val()
+      .trim(),
+    address: $("textarea[name=address]")
+      .val()
+      .trim(),
+    position: $("input[name=position]")
+      .val()
+      .trim(),
+    salary
+  };
+
+  const request = $.ajax({
+    type: "put",
+    contentType: "application/json",
+    dataType: "json",
+    data: JSON.stringify(user)
+  });
+
+  request.done(data => console.log(data));
+  request.fail(function(jqXHR, textStatus, errorThrown) {
+    console.log(jqXHR, textStatus, errorThrown);
+  });
+}
+```
+
+### 6.3 Create Controller Function
+
+Change the `userController.edit` function as the following:
+
+```js
+userController.edit = function(req, res) {
+  const userId = req.params.id;
+
+  if (userId) {
+    User.findOne({ _id: userId }).exec(function(err, user) {
+      if (err) {
+        console.log("Error:", err);
+      } else {
+        res.render("users/edit", { user });
+      }
+    });
+  } else {
+    res.render("users/create");
+  }
+};
+```
+
+## 7 Delete User
+
+### 7.1 Create JS Code File
+
+Add a cript file link to `views/users/index.ejs` as `<script type="text/javascript" src="/javascripts/delete_user.js"></script>`.
+
+Create this js code file `public/javascripts/delete_user.js` as the following:
+
+```js
+$(clickHandler);
+
+function clickHandler() {
+  $(".deleteButton").click(function() {
+    const uid = $(this).attr("data-uid");
+    console.log("delete: ", uid);
+    deleteUser(uid);
+  });
+}
+
+function deleteUser(uid) {
+  const request = $.ajax({
+    url: `/users/user/${uid}`,
+    type: "delete",
+    success: function(data) {
+      console.log("delete done", data);
+      window.location.reload();
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      console.log("error happend");
+      console.log(jqXHR, textStatus, errorThrown);
+    }
+  });
+}
+```
+
+### 7.2 Add Controller function
+
+Add the following function to `controllers/user.js`:
+
+```js
+userController.delete = function(req, res) {
+  const uid = req.params.id;
+  User.remove({ _id: uid }, function(err) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(`User ${uid} deleted!`);
+    }
+  });
+
+  // the server should respond with data to fire jquery callback
+  res.json({});
+};
+```
+
+### 7.3 Add Router Path
+
+Add `router.delete("/user/:id", user.delete);` to `routes/users.js`.
