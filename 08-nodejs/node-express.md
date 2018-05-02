@@ -90,48 +90,25 @@ A mongoose model defines the schema of a collection. A collection is a set of re
 
 ## 4 List Users
 
-### 4.1 Create a Controller
-
-Create a user controller file `controllers/user.js` as the following:
-
-```js
-const mongoose = require("mongoose");
-const User = require("../models/user");
-
-const userController = {};
-
-user.list = function(req, res) {
-  User.find({}).exec(function(err, users) {
-    if (err) {
-      console.log("Error:", err);
-    } else {
-      res.render("../views/users/index", { users });
-    }
-  });
-};
-
-module.exports = userController;
-```
-
-The controller list function finds all users from the backend database and pass it to the `index` view.
-
-### 4.2 Create a List View
+### 4.1 Create a List View
 
 Create a `views/users/index.ejs` as the following:
 
 ```html
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>Employee List</title>
   <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/javascripts/delete_user.js"></script>
 </head>
 
 <body>
   <div class="container">
     <h3>
-      <a href="/users/create">Create New User</a>
+      <a href="/users/user">Create New User</a>
     </h3>
     <h1>User List</h1>
     <% if(users.length>0) { %>
@@ -141,22 +118,31 @@ Create a `views/users/index.ejs` as the following:
             <th>User Name</th>
             <th>Position</th>
             <th>Salary</th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
-
           <% for(var i=0; i<users.length;i++) { %>
             <tr>
               <td>
-                <a href="/users/show/<%= users[i]._id%>">
-                  <%= users[i].name%>
-                </a>
+                <%= users[i].name%>
               </td>
               <td>
                 <%= users[i].position%>
               </td>
               <td>
                 <%= users[i].salary%>
+              </td>
+              <td>
+                <a href="/users/user/<%= users[i]._id%>">
+                  Edit
+                </a>
+              </td>
+              <td>
+                <button class="deleteButton" data-uid="<%= users[i]._id%>">
+                  Delete
+                </button>
               </td>
             </tr>
             <% } %>
@@ -170,6 +156,31 @@ Create a `views/users/index.ejs` as the following:
 
 </html>
 ```
+
+### 4.2 Create a Controller
+
+Create a user controller file `controllers/user.js` as the following:
+
+```js
+const mongoose = require("mongoose");
+const User = require("../models/user");
+
+const userController = {};
+
+userController.list = function(req, res) {
+  User.find({}).exec(function(err, users) {
+    if (err) {
+      console.log("Error:", err);
+    } else {
+      res.render("users/index", { users });
+    }
+  });
+};
+
+module.exports = userController;
+```
+
+The controller list function finds all users from the backend database and pass it to the `index` view.
 
 ### 4.3 Create a Route Path
 
@@ -282,3 +293,5 @@ router.get("/create", user.create);
 // Save user
 router.post("/save", user.save);
 ```
+
+## 6 Show and Edit a User
